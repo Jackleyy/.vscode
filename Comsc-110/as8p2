@@ -1,0 +1,201 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+#include <iomanip>
+
+using namespace std;
+
+struct InventoryItem {
+    string name;
+    int quantity;
+    double wholesaleCost;
+    double retailCost;
+};
+
+vector<InventoryItem> inventory;
+
+void loadInventoryFromFile(string filename) {
+    ifstream file(filename);
+    if (!file) {
+        cout << "Error opening file. Starting with an empty inventory." << endl;
+        return;
+    }
+
+    inventory.clear();
+    string name;
+    int quantity;
+    double wholesale, retail;
+    while (file >> name >> quantity >> wholesale >> retail) {
+        inventory.push_back({name, quantity, wholesale, retail});
+    }
+    file.close();
+}
+
+void saveInventoryToFile(string filename) {
+    ofstream file(filename);
+    if (!file) {
+        cout << "Error opening file for writing." << endl;
+        return;
+    }
+
+    for (const auto& item : inventory) {
+        file << item.name << " " << item.quantity << " " 
+             << item.wholesaleCost << " " << item.retailCost << endl;
+    }
+    file.close();
+}
+
+void addRecord() {
+    InventoryItem newItem;
+    cout << "Enter item name: ";
+    cin >> newItem.name;
+
+    cout << "Enter quantity: ";
+    cin >> newItem.quantity;
+    while (newItem.quantity < 0) {
+        cout << "Quantity must be non-negative. Enter again: ";
+        cin >> newItem.quantity;
+    }
+
+    cout << "Enter wholesale cost: ";
+    cin >> newItem.wholesaleCost;
+    while (newItem.wholesaleCost < 0) {
+        cout << "Wholesale cost must be non-negative. Enter again: ";
+        cin >> newItem.wholesaleCost;
+    }
+
+    cout << "Enter retail cost: ";
+    cin >> newItem.retailCost;
+    while (newItem.retailCost < 0) {
+        cout << "Retail cost must be non-negative. Enter again: ";
+        cin >> newItem.retailCost;
+    }
+
+    inventory.push_back(newItem);
+    cout << "Record added successfully." << endl;
+}
+
+void displayRecord() {
+    string searchName;
+    cout << "Enter the name of the item: ";
+    cin >> searchName;
+
+    for (const auto& item : inventory) {
+        if (item.name == searchName) {
+            cout << "Name: " << item.name << endl;
+            cout << "Quantity: " << item.quantity << endl;
+            cout << "Wholesale Cost: $" << fixed << setprecision(2) << item.wholesaleCost << endl;
+            cout << "Retail Cost: $" << fixed << setprecision(2) << item.retailCost << endl;
+            return;
+        }
+    }
+
+    cout << "Record not found." << endl;
+}
+
+void changeRecord() {
+    string searchName;
+    cout << "Enter the name of the item to change: ";
+    cin >> searchName;
+
+    for (auto& item : inventory) {
+        if (item.name == searchName) {
+            cout << "Enter new quantity: ";
+            cin >> item.quantity;
+            while (item.quantity < 0) {
+                cout << "Quantity must be non-negative. Enter again: ";
+                cin >> item.quantity;
+            }
+
+            cout << "Enter new wholesale cost: ";
+            cin >> item.wholesaleCost;
+            while (item.wholesaleCost < 0) {
+                cout << "Wholesale cost must be non-negative. Enter again: ";
+                cin >> item.wholesaleCost;
+            }
+
+            cout << "Enter new retail cost: ";
+            cin >> item.retailCost;
+            while (item.retailCost < 0) {
+                cout << "Retail cost must be non-negative. Enter again: ";
+                cin >> item.retailCost;
+            }
+
+            cout << "Record updated successfully." << endl;
+            return;
+        }
+    }
+
+    cout << "Record not found." << endl;
+}
+
+void displayAllRecords() {
+    if (inventory.empty()) {
+        cout << "Inventory is empty." << endl;
+        return;
+    }
+
+    for (const auto& item : inventory) {
+        cout << "Name: " << item.name << ", Quantity: " << item.quantity
+             << ", Wholesale: $" << fixed << setprecision(2) << item.wholesaleCost
+             << ", Retail: $" << item.retailCost << endl;
+    }
+}
+
+void prepareReport() {
+    double totalWholesaleValue = 0;
+    double totalRetailValue = 0;
+    int totalQuantity = 0;
+
+    for (const auto& item : inventory) {
+        totalWholesaleValue += item.wholesaleCost * item.quantity;
+        totalRetailValue += item.retailCost * item.quantity;
+        totalQuantity += item.quantity;
+    }
+
+    cout << "Inventory Report" << endl;
+    cout << "Total Wholesale Value: $" << fixed << setprecision(2) << totalWholesaleValue << endl;
+    cout << "Total Retail Value: $" << fixed << setprecision(2) << totalRetailValue << endl;
+    cout << "Total Quantity: " << totalQuantity << endl;
+}
+
+int main() {
+    string filename = "inventory.txt";
+    char choice;
+
+    cout << "Load inventory from file? (y/n): ";
+    cin >> choice;
+
+    if (choice == 'y' || choice == 'Y') {
+        loadInventoryFromFile(filename);
+    }
+
+    while (true) {
+        cout << "\nInventory Management System" << endl;
+        cout << "1. Add new record" << endl;
+        cout << "2. Display a record" << endl;
+        cout << "3. Change a record" << endl;
+        cout << "4. Display all records" << endl;
+        cout << "5. Prepare report" << endl;
+        cout << "6. Save and exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case '1': addRecord(); break;
+            case '2': displayRecord(); break;
+            case '3': changeRecord(); break;
+            case '4': displayAllRecords(); break;
+            case '5': prepareReport(); break;
+            case '6':
+                saveInventoryToFile(filename);
+                cout << "Inventory saved. Exiting program." << endl;
+                return 0;
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+        }
+    }
+
+    return 0;
+}

@@ -1,0 +1,73 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+char encrypt(char ch) {
+    if (isalpha(ch)) {
+        char base = isupper(ch) ? 'A' : 'a';
+        return (ch - base + 1) % 26 + base;
+    }
+    return ch;
+}
+
+char decrypt(char ch) {
+    if (isalpha(ch)) {
+        char base = isupper(ch) ? 'A' : 'a';
+        return (ch - base + 25) % 26 + base;
+    }
+    return ch;
+}
+
+void processFile(const std::string& inputFile, const std::string& outputFile, char (*operation)(char)) {
+    std::ifstream inFile(inputFile);
+    std::ofstream outFile(outputFile);
+    
+    if (!inFile || !outFile) {
+        std::cerr << "Error opening files!" << std::endl;
+        return;
+    }
+    
+    char ch;
+    while (inFile.get(ch)) {
+        outFile.put(operation(ch));
+    }
+    
+    inFile.close();
+    outFile.close();
+}
+
+int main() {
+    std::string inputFile, encryptedFile, decryptedFile;
+    
+    std::cout << "Enter the name of the input file: ";
+    std::cin >> inputFile;
+    
+    std::cout << "Enter the name for the encrypted file: ";
+    std::cin >> encryptedFile;
+    
+    std::cout << "Enter the name for the decrypted file: ";
+    std::cin >> decryptedFile;
+    
+    // Encrypt
+    processFile(inputFile, encryptedFile, encrypt);
+    std::cout << "Encryption complete. Encrypted file: " << encryptedFile << std::endl;
+    
+    // Decrypt
+    processFile(encryptedFile, decryptedFile, decrypt);
+    std::cout << "Decryption complete. Decrypted file: " << decryptedFile << std::endl;
+    
+    // Display decrypted contents on console
+    std::ifstream decryptedFileStream(decryptedFile);
+    if (decryptedFileStream) {
+        std::cout << "\nDecrypted contents:\n";
+        std::string line;
+        while (std::getline(decryptedFileStream, line)) {
+            std::cout << line << std::endl;
+        }
+        decryptedFileStream.close();
+    } else {
+        std::cerr << "Error opening decrypted file for reading!" << std::endl;
+    }
+    
+    return 0;
+}
