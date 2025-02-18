@@ -1,95 +1,89 @@
-// C++ program to implement tic tac toe game 
-#include <iostream> 
-using namespace std; 
-  
-// Function to draw the Tic-Tac-Toe board 
-void drawBoard(char board[3][3]) 
-{ 
-    cout << "-------------\n"; 
-    for (int i = 0; i < 3; i++) { 
-        cout << "| "; 
-        for (int j = 0; j < 3; j++) { 
-            cout << board[i][j] << " | "; 
-        } 
-        cout << "\n-------------\n"; 
-    } 
-} 
-  
-// Function to check for a win 
-bool checkWin(char board[3][3], char player) 
-{ 
-    // Check rows, columns, and diagonals 
-    for (int i = 0; i < 3; i++) { 
-        if (board[i][0] == player && board[i][1] == player 
-            && board[i][2] == player) 
-            return true; 
-        if (board[0][i] == player && board[1][i] == player 
-            && board[2][i] == player) 
-            return true; 
-    } 
-    if (board[0][0] == player && board[1][1] == player 
-        && board[2][2] == player) 
-        return true; 
-    if (board[0][2] == player && board[1][1] == player 
-        && board[2][0] == player) 
-        return true; 
-    return false; 
-} 
-  
-int main() 
-{ 
-    // Initialize the board and players 
-    char board[3][3] = { { ' ', ' ', ' ' }, 
-                         { ' ', ' ', ' ' }, 
-                         { ' ', ' ', ' ' } }; 
-    char player = 'X'; 
-    int row, col; 
-    int turn; // Declare turn here 
-  
-    cout << "Welcome to Tic-Tac-Toe!\n"; 
-  
-    // Game loop 
-    for (turn = 0; turn < 9; turn++) { 
-        // Draw the board 
-        drawBoard(board); 
-  
-        // Prompt for valid input 
-        while (true) { 
-            cout << "Player " << player 
-                 << ", enter row (0-2) and column (0-2): "; 
-            cin >> row >> col; 
-  
-            if (board[row][col] != ' ' || row < 0 || row > 2 
-                || col < 0 || col > 2) { 
-                cout << "Invalid move. Try again.\n"; 
-            } 
-            else { 
-                break; // Valid input, exit the loop. 
-            } 
-        } 
-  
-        // Make the move 
-        board[row][col] = player; 
-  
-        // Check for a win after making a move 
-        if (checkWin(board, player)) { 
-            drawBoard(board); 
-            cout << "Player " << player << " wins!\n"; 
-            break; // Exit the loop after a win. 
-        } 
-  
-        // Switch to the other player 
-        player = (player == 'X') ? 'O' : 'X'; 
-    } 
-  
-    // End of the game 
-    drawBoard(board); 
-  
-    // Check for a draw 
-    if (turn == 9 && !checkWin(board, 'X') 
-        && !checkWin(board, 'O')) { 
-        cout << "It's a draw!\n"; 
-    } 
-  
-    return 0; 
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+void allocateArray(int size, int* &arrAdd){
+    arrAdd = new int[size];
+}
+
+void fillArray(int size, int* arrAdd){
+    for(int i = 0; i < size; i++){
+        arrAdd[i] = (rand() % 101);
+    }
+}
+
+void displayArray(int size, int* arrAdd){
+    for (int i = 0; i < size; i++){
+        cout << arrAdd[i] << ", ";
+    }
+}
+
+void sortArray(int size, int* arrAdd){
+    for (int i = 0; i < size - 1; i++){
+        for(int j = i + 1; j < size; j++){
+            if (arrAdd[j] < arrAdd[i]){
+                swap(arrAdd[i], arrAdd[j]);
+            }
+        }
+    }
+}
+
+void mergeArrays(int size1, int* arrAdd1, int size2, int* arrAdd2, int* dest){
+    int i = 0, j = 0, k = 0;
+    while (i < size1 && j < size2) {
+        if (arrAdd1[i] <= arrAdd2[j]) {
+            dest[k++] = arrAdd1[i++];
+        } else {
+            dest[k++] = arrAdd2[j++];
+        }
+    }
+    while (i < size1) {
+        dest[k++] = arrAdd1[i++];
+    }
+    while (j < size2) {
+        dest[k++] = arrAdd2[j++];
+    }
+}
+
+void deleteArray(int * &add){
+    delete [] add;
+    add = nullptr;
+}
+
+int main() {
+    int size1 = 9, size2 = 5;
+    int *add1 = nullptr;
+    int *add2 = nullptr;
+    int *dest = nullptr;
+
+    allocateArray(size1, add1);
+    fillArray(size1, add1);
+    cout << "Array 1: ";
+    displayArray(size1, add1);
+    sortArray(size1, add1);
+    cout << "\nSorted Array 1: ";
+    displayArray(size1, add1);
+    cout << "\n";
+
+    allocateArray(size2, add2);
+    fillArray(size2, add2);
+    cout << "\nArray 2: ";
+    displayArray(size2, add2);
+    sortArray(size2, add2);
+    cout << "\nSorted Array 2: ";
+    displayArray(size2, add2);
+    cout << "\n";
+
+    int mergedSize = size1 + size2;
+    allocateArray(mergedSize, dest);
+    mergeArrays(size1, add1, size2, add2, dest);
+    cout << "\nMerged Array: ";
+    displayArray(mergedSize, dest);
+    cout << "\n";
+
+    deleteArray(add1);
+    deleteArray(add2);
+    deleteArray(dest);
+
+    return 0;
 }
