@@ -5,6 +5,8 @@
 #include <string>
 using namespace std;
 
+bool is_number(const std::string&);
+
 int main(){
     /*
         ok so my approach should go something like this
@@ -26,11 +28,36 @@ int main(){
           - if loop ends with stack[i+1] != null then false
               
     */
-    ofstream test("test.txt");
+    ifstream test("test.txt");
     string myText;
 
     while(getline(test, myText)){
+      int num;
+      string tell;
+      stack<string> sab;
+      
 
+      //if it is a number it will be put in num, if its not a number it must be 
+      //a string to decipher so the first letter will be the instruction
+      if(is_number(myText)){
+        num = stoi(myText);
+        cout << num;
+      }
+      else{
+        tell = myText.substr(0,1);
+        cout << tell;
+      }
+
+      
+      if(tell == "i"){
+        sab.push(myText.substr(2));
+      }
+      else if (tell == "r"){
+        
+      }
+        
+
+      
     }
 
 
@@ -39,6 +66,14 @@ int main(){
 
     return 0;
 
+    
 
+}
 
+//stole from stack overflow
+bool is_number(const std::string& s)
+{
+    std::string::const_iterator it = s.begin();
+    while (it != s.end() && std::isdigit(*it)) ++it;
+    return !s.empty() && it == s.end();
 }
