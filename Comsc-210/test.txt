@@ -1,0 +1,19 @@
+4
+i cat
+i dog
+r dog
+r cat
+6
+i sunshine
+i apple
+i street
+r apple
+r street
+r sunshine
+2
+i red
+r red
+3
+i blue
+i green
+r green
