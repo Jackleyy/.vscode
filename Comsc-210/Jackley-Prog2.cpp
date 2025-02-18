@@ -32,57 +32,47 @@ int main(){
     string myText;
 
 
-      int num; // tells how many lines to read
-      int index = 1; //will tell when to clear the stack for the next test; set to one because the continue will skip index++
-      string tell; //instruction; either i or r
-      stack<string> sab; //stack for the strings  
-      string temp; //for placing the popped string into for checking purposes
-      bool stack = true; //if it is a stack or not
+    int num; // tells how many lines to read
+    int index = 1; //will tell when to clear the stack for the next test; set to one because the continue will skip index++
+    string tell; //instruction; either i or r
+    stack<string> sab; //stack for the strings  
+    string temp; //for placing the popped string into for checking purposes
+    bool stack = true; //if it is a stack or not
 
+
+    //issue is because when we say its not a stack, it skips
+    //the rest of the code and therefore index will never match
     while(getline(test, myText)){
       //if it is a number it will be put in num, if its not a number it must be 
       //a string to decipher so the first letter will be the instruction
 
       if(is_number(myText)){ //if nuymber, skip the rest of the code
         num = stoi(myText);
-        cout << num;
+        index = 0;
+        stack = true;
         continue;
       }
-      else{//if not number, read the instruction
+      else{ //if not number, read the instruction and word
         tell = myText.substr(0,1);
-      }
-
-      //we have instruction, use logic to compare the pops
-      if(tell == "i"){
-        sab.push(myText.substr(2));
-      }
-      else if (tell == "r"){
         temp = myText.substr(2);
+        index++;
+      }
 
-        if(!sab.empty()){// i did this ugly nested if because it was throwing 
-                         // a seg fault anytime i did the following line
-          if (temp != string(sab.top())){
-            stack = false;
-          }
-        }
-      }
-      else{
-        cout << "invalid character for reading, must be 'i' or 'r' " << endl;
-        stack = false;
-        break;
-      }
-        
-      cout << index << 90 << endl;
-      //end check; checks if it has reach end of desired readings and resets eveerything
-      if (index == num){
+      //cout << "index: " << index << " num: " << num << endl;
+      //cout << "word: " << temp << endl;
+      //checks if it has reach end of desired readings, resets eveerything, makes sure 
+      //code doesnt run again so false positive doesnt exist
+      
+      if (index == num){ //problem occurs because 
+        sab.pop();
         //check the result of the stack
-        if(stack){
+        if(stack && sab.empty()){
           cout << "stack" << endl;
         }
         else{
           cout << "not stack" << endl;
+          continue;
         }
-        stack = true;
         index = 1;
 
         //clearing the stack
@@ -92,7 +82,38 @@ int main(){
         continue;
       }
 
-      index++;
+      if (stack == false){
+        sab.pop();
+        continue;
+      }
+
+
+
+      //we have instruction, use logic to compare the pops
+      if(tell == "i"){
+        sab.push(temp);
+      }
+      else if (tell == "r"){
+       // cout << temp << index << endl;
+       // cout << string(sab.top()) << index << endl;
+
+        if(temp != string(sab.top())){
+          stack = false;
+          cout << "index check1: " << index << endl;
+           
+        }
+        else{
+          cout << "index check 2: " << index << endl;
+          stack = true; 
+        }
+        
+        cout << "top: " << sab.top() << endl;
+        cout << "stack? " << stack << endl;
+        sab.pop();
+        cout << "empty? " << sab.empty() << endl;
+         
+      }
+        
     }
 
 
