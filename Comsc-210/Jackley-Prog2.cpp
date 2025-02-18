@@ -107,10 +107,8 @@ int main(){
           stack = true; 
         }
         
-        cout << "top: " << sab.top() << endl;
-        cout << "stack? " << stack << endl;
+        
         sab.pop();
-        cout << "empty? " << sab.empty() << endl;
          
       }
         
