@@ -19,3 +19,7 @@ i green
 r green
 1
 r kitt
+i foo
+r fee
+i fick
+i food

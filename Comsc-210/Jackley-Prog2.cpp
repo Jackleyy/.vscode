@@ -31,89 +31,70 @@ int main(){
     ifstream test("test.txt");
     string myText;
 
+    int num = 0;      // tells how many lines to read
+    int index = 1;    // will tell when to clear the stack for the next test; set to one because the continue will skip index++
+    string tell;      // instruction; either i or r
+    stack<string> sab; // stack for the strings  
+    string temp;      // for placing the popped string into for checking purposes
+    bool stack = true; // if it is a stack or not
 
-    int num; // tells how many lines to read
-    int index = 1; //will tell when to clear the stack for the next test; set to one because the continue will skip index++
-    string tell; //instruction; either i or r
-    stack<string> sab; //stack for the strings  
-    string temp; //for placing the popped string into for checking purposes
-    bool stack = true; //if it is a stack or not
-
-
-    //issue is because when we say its not a stack, it skips
-    //the rest of the code and therefore index will never match
     while(getline(test, myText)){
-      //if it is a number it will be put in num, if its not a number it must be 
-      //a string to decipher so the first letter will be the instruction
+        // if it is a number, it will be put in num; if it's not a number it must be 
+        // a string to decipher so the first letter will be the instruction
+        if(is_number(myText)){ // if number, start a new test case
+            num = stoi(myText);
+            index = 0;
+            stack = true;
+            // clearing the stack for a new test case
+            while(!sab.empty()){
+                sab.pop();
+            }
+            continue;
+        }
+        else { // if not a number, read the instruction 
+            tell = myText.substr(0,1);
+            // get the word part from position 2 to the end
+            temp = myText.substr(2);
+            index++;
+        }
 
-      if(is_number(myText)){ //if nuymber, skip the rest of the code
-        num = stoi(myText);
-        index = 0;
-        stack = true;
-        continue;
-      }
-      else{ //if not number, read the instruction and word
-        tell = myText.substr(0,1);
-        
-      }
-
-      //cout << "index: " << index << " num: " << num << endl;
-      //cout << "word: " << tell << endl;
-      //checks if it has reach end of desired readings, resets eveerything, makes sure 
-      //code doesnt run again so false positive doesnt exist
-      
-      //we have instruction, use logic to compare the pops
-      if(tell == "i"){
-        sab.push(myText.substr(2));
-      }
-      else if (tell == "r" && !sab.empty()){
-        temp = myText.substr(2);
-        if(sab.empty() || temp != sab.top()){
-          stack = false;
+        // we have instruction, use logic to process the command
+        if(tell == "i"){
+            sab.push(temp);
+        }
+        else if (tell == "r"){
+            if(sab.empty() || sab.top() != temp){
+                stack = false;
+            }
+            else{
+                sab.pop();
+            }
         }
         else{
-          stack = true; 
+            cout << "invalid character for reading, must be 'i' or 'r' " << endl;
+            stack = false;
+            // break out of processing this test case by skipping further commands
+            // (could also use a while loop to skip commands until index == num)
         }
-        sab.pop();
-      }
 
-      index++;
-      cout << "index: " << index << " num: " << num << endl;
-      cout << "word: " << myText.substr(2) << endl;
-
-      //problem with the last input si that it will never reach the last if statement
-      //checking the r, it jumps immedietly into the stack check
-
-      if (index == num){
-        if (!sab.empty()){//get last element out of the stack
-          sab.pop();
+        // checks if it has reached the end of desired readings, resets everything, 
+        // makes sure code doesn't run again so false positive doesn't exist
+        if (index == num){
+            // if there is any leftover in the stack, it's not a proper stack
+            if(!sab.empty()){
+                stack = false;
+            }
+            cout << (stack ? "stack" : "not stack") << endl;
+            index = 1;
+            // clear the stack for the next test case
+            while(!sab.empty()){
+                sab.pop();
+            }
         }
-        //check the result of the stack; has to be empty and also a stack
-        if(stack){
-          cout << "stack" << endl;
-        }
-        else{
-          cout << "not stack" << endl;
-          
-        }
-        index = 1;
-
-        //clearing the stack
-        while(!sab.empty()){
-          sab.pop();
-        }
-      }
-        
     }
 
-
-
-    test.close(); //closing the file
-
+    test.close();
     return 0;
-
-    
-
 }
 
 //stole from stack overflow
