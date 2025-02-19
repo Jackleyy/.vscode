@@ -19,7 +19,9 @@ i green
 r green
 1
 r kitt
+4
 i foo
 r fee
 i fick
 i food
+8
