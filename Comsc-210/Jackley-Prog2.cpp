@@ -58,14 +58,15 @@ int main(){
         index++;
       }
 
-
+      //cout << "index: " << index << " num: " << num << endl;
+      //cout << "word: " << temp << endl;
       //checks if it has reach end of desired readings, resets eveerything, makes sure 
       //code doesnt run again so false positive doesnt exist
       
       if (index == num){ //problem occurs because 
         sab.pop();
-        //check the result of the stack
-        if(stack && sab.empty()){
+        //check the result of the stack; has to be empty and also a stack
+        if(stack){
           cout << "stack" << endl;
         }
         else{
@@ -81,8 +82,9 @@ int main(){
         continue;
       }
 
-
-      if (stack == false){
+      //if it is not a stack, skip the rest of the code
+      // this ensures that a false positive does not occur
+      if (!stack){
         sab.pop();
         continue;
       }
@@ -93,8 +95,8 @@ int main(){
       if(tell == "i"){
         sab.push(temp);
       }
-      else if (tell == "r"){
-        if(temp != string(sab.top())){
+      else if (tell == "r" ){
+        if(temp != string(sab.top()) || sab.empty()){
           stack = false;
         }
         else{
