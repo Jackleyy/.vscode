@@ -54,24 +54,23 @@ int main(){
       }
       else{ //if not number, read the instruction and word
         tell = myText.substr(0,1);
-        temp = myText.substr(2);
         index++;
       }
 
       //cout << "index: " << index << " num: " << num << endl;
-      //cout << "word: " << temp << endl;
+      //cout << "word: " << tell << endl;
       //checks if it has reach end of desired readings, resets eveerything, makes sure 
       //code doesnt run again so false positive doesnt exist
       
-      if (index == num){ //problem occurs because 
-        sab.pop();
+      if (index == num){
+        
         //check the result of the stack; has to be empty and also a stack
-        if(stack){
+        if(stack ){
           cout << "stack" << endl;
         }
         else{
           cout << "not stack" << endl;
-          continue;
+          
         }
         index = 1;
 
@@ -84,7 +83,7 @@ int main(){
 
       //if it is not a stack, skip the rest of the code
       // this ensures that a false positive does not occur
-      if (!stack){
+      if (stack == false){
         sab.pop();
         continue;
       }
@@ -93,19 +92,18 @@ int main(){
 
       //we have instruction, use logic to compare the pops
       if(tell == "i"){
-        sab.push(temp);
+        sab.push(myText.substr(2));
       }
-      else if (tell == "r" ){
-        if(temp != string(sab.top()) || sab.empty()){
+      else if (tell == "r" && !sab.empty()){
+        temp = myText.substr(2);
+        if(sab.empty() || temp != string(sab.top())){
           stack = false;
         }
         else{
           stack = true; 
         }
         sab.pop();
-         
       }
-        
     }
 
 

@@ -17,3 +17,5 @@ r red
 i blue
 i green
 r green
+1
+r kitt
