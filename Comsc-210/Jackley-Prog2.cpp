@@ -54,7 +54,7 @@ int main(){
       }
       else{ //if not number, read the instruction and word
         tell = myText.substr(0,1);
-        index++;
+        
       }
 
       //cout << "index: " << index << " num: " << num << endl;
@@ -62,10 +62,34 @@ int main(){
       //checks if it has reach end of desired readings, resets eveerything, makes sure 
       //code doesnt run again so false positive doesnt exist
       
+      //we have instruction, use logic to compare the pops
+      if(tell == "i"){
+        sab.push(myText.substr(2));
+      }
+      else if (tell == "r" && !sab.empty()){
+        temp = myText.substr(2);
+        if(sab.empty() || temp != sab.top()){
+          stack = false;
+        }
+        else{
+          stack = true; 
+        }
+        sab.pop();
+      }
+
+      index++;
+      cout << "index: " << index << " num: " << num << endl;
+      cout << "word: " << myText.substr(2) << endl;
+
+      //problem with the last input si that it will never reach the last if statement
+      //checking the r, it jumps immedietly into the stack check
+
       if (index == num){
-        
+        if (!sab.empty()){//get last element out of the stack
+          sab.pop();
+        }
         //check the result of the stack; has to be empty and also a stack
-        if(stack ){
+        if(stack){
           cout << "stack" << endl;
         }
         else{
@@ -78,32 +102,8 @@ int main(){
         while(!sab.empty()){
           sab.pop();
         }
-        continue;
       }
-
-      //if it is not a stack, skip the rest of the code
-      // this ensures that a false positive does not occur
-      if (stack == false){
-        sab.pop();
-        continue;
-      }
-
-
-
-      //we have instruction, use logic to compare the pops
-      if(tell == "i"){
-        sab.push(myText.substr(2));
-      }
-      else if (tell == "r" && !sab.empty()){
-        temp = myText.substr(2);
-        if(sab.empty() || temp != string(sab.top())){
-          stack = false;
-        }
-        else{
-          stack = true; 
-        }
-        sab.pop();
-      }
+        
     }
 
 
