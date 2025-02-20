@@ -32,7 +32,7 @@ int main(){
     string myText;
 
     int num = 0;      // tells how many lines to read
-    int index = 1;    // will tell when to clear the stack for the next test; set to one because the continue will skip index++
+    int index = 1;    // will tell when to clear the stack for the next test;
     string tell;      // instruction; either i or r
     stack<string> sab; // stack for the strings  
     string temp;      // for placing the popped string into for checking purposes
