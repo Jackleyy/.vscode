@@ -1,3 +1,17 @@
+
+/*************************************************************************************
+Description: determine if a series of commands is a stack or not
+
+Author: Justin Ackley
+Assignment: PA2
+Class: COMSC-210
+Date: 02/18/2025
+Status: Complete
+Time spent: 6:32:00
+
+
+************************************************************************************/
+
 #include <iomanip>
 #include <iostream>
 #include <stack>
