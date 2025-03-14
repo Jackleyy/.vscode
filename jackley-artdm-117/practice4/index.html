@@ -28,31 +28,39 @@ Website URL:
     }
     header{/* this will change the header font to Gothic medium and its text color to a yellow, will
                 be overriden by any texts in a header
-        */
+           */
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         color: rgb(215, 182, 47);
     }
-    section{
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: rgb(219, 137, 13);
+    section{/*this is going to change the defualt background colo rto white and the text to blue*/
+        background-color: rgb(229, 229, 229);
+        color: rgb(45, 76, 103);
     }
-    strong{
+    strong{/*any text with the strong tag, so bold, will have the impact font and red coloring*/
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         color: rgb(219, 27, 64);
     }
-    em{
+    em{/*any text tagged to be emphasized, so italic, will now be curive and blue*/
         font-family: cursive;
-        color: rgb(0, 100, 182) ;
+        color: rgb(0, 100, 182);
     }
-    a:link{
-        color: rgb(44, 62, 112)
+    a:link{/*any unvisited links will be blue*/
+        color: rgb(44, 62, 112);
+        font-weight: 200;
     }
-    a:visited{
+    a:visited{/*vsisited links will be a light purple*/
         color: rgb(176, 137, 216);
+        font-weight: 200;
 
-    }
+    }/*this is a class tag that will bolden and expand the text*/
     .quote{
-
+        font-weight: bolder;
+        font-stretch: expanded;
+    }
+    .disclaimer{ /*this is a class tag that will make the font weight higher and stretch it out*/
+        font-weight: 900;
+        font-stretch: super-condensed;
+        color:rgb(215, 182, 47);
     }
 
   </style>
@@ -135,7 +143,7 @@ Website URL:
             enormous amount of money for Vermont charities although she was not authorized to disclose the amount, yet. 
         </p>
 
-        <p class = >
+        <p class = quote >
             "But it's BIG and it's amazing! Thank you!! Generosity brings joy," she tweeted.
         </p>
 
@@ -166,8 +174,8 @@ Website URL:
 
     </section>
 
-    <footer>"This fictitious website was created as an academic exercise for the Diablo Valley College course, ARTDM-171:Web Design I. 
-            In no way should this content be considered or used as a source of factual public information."</footer>
+    <p class = disclaimer>"This fictitious website was created as an academic exercise for the Diablo Valley College course, ARTDM-171:Web Design I. 
+            In no way should this content be considered or used as a source of factual public information."</p>
     </div>    
 </body>
 
