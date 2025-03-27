@@ -1,0 +1,69 @@
+@charset "UTF-8";
+/* CSS Document */
+body{
+	background-image:url(images/tileable_wood_texture.png);
+}
+#container{
+	width: 1000px;
+	background-color: grey;
+	margin: 0 auto;
+}
+header{
+	width: 980px;
+	height: 100px; 
+	padding: 10px;
+	text-align: center;
+	background-color: teal;
+}
+/******************nav starts********************/
+nav ul{
+	margin: 0 auto;
+	list-style: none;
+	text-align: center;
+	background-color: black;
+}
+nav li{
+	display: inline-block;
+	margin: 0;
+}
+nav a:link, a:visited{
+	display: block;
+	width: 100px;
+	color: white;
+	padding: 3px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+nav a:hover{
+	background-color: gray;
+}
+/***************************nav ends**************************************/
+section{
+	padding: 10px;
+	background-color: #E2E1E1;
+}
+
+figure{
+	float: right;
+	margin: 0 2px;
+}
+
+figure img{
+	border: 2px solid yellow;
+}
+
+footer{
+	padding: 10px;
+	background-color: black;
+	color: white;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
