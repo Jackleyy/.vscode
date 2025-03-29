@@ -1,78 +1,104 @@
-
+/* Sets the background image and font for the entire page */
 body{
-    background-image: url("images/flower.png");
-    font-family: 'Courier New', Courier, monospace;
+  background-image: url("images/flower.png");
+  font-family: 'Courier New', Courier, monospace;
 }
 
+/* Styles the main container, centers it, and sets its width and background color */
 #container{
-  width: 1100px;
-  background-color: white;
-  margin: 100px auto;
-  padding: 0px;
+width: 1100px;
+background-color: white;
+margin: 100px auto;
+padding: 0px;
 }
-header{
-  width: auto;
-  text-align: center;
-  background-color: bisque;
-}
-h1{
-  text-align: center;
-}
-h2{
-  margin: 0px;
-  text-align: center;
-}
-#descriptors{
-  margin-left: 50px;
-  text-align: left;
-}
-main{
-  text-align: left;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  color: #660033;
-}
-p{
-  color: black;
-  margin: 25px;
-  margin-left: 50px;
-  font-size: larger;
-}
-img{
-  float: right;
-  width: 40%;
-  margin-left: 50px;
-  margin-bottom: 200px;
-  margin-top: 50px;
-}
-nav{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  background-color: bisque;
-  margin: 0px;
-  list-style: none;
 
+/* Styles the header section, centers its content, and sets the background color */
+header{
+width: auto;
+text-align: center;
+background-color: bisque;
 }
+
+/* Centers the main heading (h1) */
+h1{
+text-align: center;
+}
+
+/* Centers the subheadings (h2) and removes their margins */
+h2{
+margin: 0px;
+text-align: center;
+}
+
+/* Styles the #descriptors section, aligns text to the left, and adds a left margin */
+#descriptors{
+margin-left: 50px;
+text-align: left;
+}
+
+/* Styles the main content area, sets text color, and adds vertical margins */
+main{
+text-align: left;
+margin-top: 20px;
+margin-bottom: 20px;
+color: #660033;
+}
+
+/* Styles paragraph text, sets color, margins, and font size */
+p{
+color: black;
+margin: 25px;
+margin-left: 50px;
+font-size: larger;
+}
+
+/* Styles images, floats them to the right, sets their width, and adds margins */
+img{
+float: right;
+width: 40%;
+margin-left: 50px;
+margin-bottom: 200px;
+margin-top: 50px;
+}
+
+/* Styles the navigation bar, sets font, padding, background color, and removes list styling */
+nav{
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+padding-top: 15px;
+padding-bottom: 15px;
+background-color: bisque;
+margin: 0px;
+list-style: none;
+}
+
+/* Styles ordered lists (ol) within the navigation, sets font weight */
 ol{
-  font-weight: 100;
+font-weight: 100;
 }
+
+/* Styles individual navigation list items, adds margins and adjusts font size */
 nav li{
-  margin: 10px;
-  margin-left: 60px;
-  font-size: larger;
-  padding-top: 0;
+margin: 10px;
+margin-left: 60px;
+font-size: larger;
+padding-top: 0;
 }
+
+/* Styles links and visited links, sets their color */
 a, a:visited{
-  color: black; 
+color: black; 
 }
+
+/* Styles the footer, sets text color, background color, and padding */
 footer{
-  color: white;
-  background-color: #660033;
-  padding: 1px;
+color: white;
+background-color: #660033;
+padding: 1px;
 }
+
+/* Styles the #footer section, sets font, color, and italicizes text */
 #footer{
-  color: white;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-style: italic;
+color: white;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-style: italic;
 }
