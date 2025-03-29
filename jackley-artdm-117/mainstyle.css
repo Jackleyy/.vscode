@@ -1,0 +1,78 @@
+
+body{
+    background-image: url("images/flower.png");
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#container{
+  width: 1100px;
+  background-color: white;
+  margin: 100px auto;
+  padding: 0px;
+}
+header{
+  width: auto;
+  text-align: center;
+  background-color: bisque;
+}
+h1{
+  text-align: center;
+}
+h2{
+  margin: 0px;
+  text-align: center;
+}
+#descriptors{
+  margin-left: 50px;
+  text-align: left;
+}
+main{
+  text-align: left;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #660033;
+}
+p{
+  color: black;
+  margin: 25px;
+  margin-left: 50px;
+  font-size: larger;
+}
+img{
+  float: right;
+  width: 40%;
+  margin-left: 50px;
+  margin-bottom: 200px;
+  margin-top: 50px;
+}
+nav{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: bisque;
+  margin: 0px;
+  list-style: none;
+
+}
+ol{
+  font-weight: 100;
+}
+nav li{
+  margin: 10px;
+  margin-left: 60px;
+  font-size: larger;
+  padding-top: 0;
+}
+a, a:visited{
+  color: black; 
+}
+footer{
+  color: white;
+  background-color: #660033;
+  padding: 1px;
+}
+#footer{
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: italic;
+}
