@@ -24,11 +24,12 @@ img {
 
 /* Style rules for mobile viewport */
 
-/* Style rule to hide tab-desk class */
+/* Style rule to hide tab-desk class
 .tab-desk {
     display: none;
 
 }
+     */
 
 /* Style rules for header content */
 header {
@@ -116,9 +117,37 @@ main ul {
 */
 
 #pamper, #full, #basic {
-    margin: 0.2%;
+    margin: 2%;
 }
 
+section img{
+    display: block;
+    width: 100%;
+    border: 5px solid #44034d;
+    border-radius: 10px;
+    
+}
+
+section h2{
+    color: #44034d;
+    text-align: center;
+    font-size:3em;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+section li{
+    color:#44034d;
+    font-size: 35px;
+    font-weight: 600
+}
+
+
+#services h2{
+    font-size: 30px;
+    text-align: left ;
+    color: #234b95;
+}
 
 
 
