@@ -1,5 +1,6 @@
 #ifndef MY_HEAP_
 #define MY_HEAP_
+#include <algorithm>
 
 //
 // COMSC-210
@@ -82,7 +83,7 @@ void myHeap<ItemType>::heapRebuild(const int subTreeNodeIndex) {
       }
 
       if(largest != daddy_index){
-         swap(items[daddy_index], items[largest]);
+         std::swap(items[daddy_index], items[largest]);
          daddy_index = largest;
       }
       else{
@@ -110,7 +111,7 @@ bool myHeap<ItemType>::remove() {
       return false;
    }
 
-   swap(items[0], items[itemCount-1]);
+   std::swap(items[0], items[itemCount-1]);
    itemCount--; // 1 less item so counter follows suit
    
    heapRebuild(0);
@@ -136,7 +137,7 @@ bool myHeap<ItemType>::add(const ItemType& newData) {
    itemCount++;
 
    while(index > 0 && items[index] > items[getParentIndex(index)]){
-      swap(items[index], items[getParentIndex(index)]);
+      std::swap(items[index], items[getParentIndex(index)]);
       index = getParentIndex(index);
    }
 
@@ -151,8 +152,9 @@ myHeap<ItemType>::
 myHeap(const ItemType someArray[], const int arraySize):
              itemCount(arraySize), maxItems(2 * arraySize) {
       
+   items = new ItemType[DEFAULT_CAPACITY];
    // Copy elements from the input array into the heap
-   for (int i = 0; i < arraySize; i++) {
+   for (int i = 0; i <= arraySize; i++) {
       items[i] = someArray[i];
    }
 
