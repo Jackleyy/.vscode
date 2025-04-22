@@ -44,6 +44,8 @@ netflixEntry *entryHash[HASH_SIZE] = { 0 };
 // string the user typed to find).  your hash function goes here.
 //
 // Don't use this one, it's bad! (everything will hash to only a few buckets).
+
+/*
 unsigned int getHashIndex(string hashInput) {
     unsigned int sum = 0;
 
@@ -60,6 +62,22 @@ unsigned int getHashIndex(string hashInput) {
     // hash "bucket".
     return (sum % HASH_SIZE);
 }
+*/
+
+//My Hash index generator
+unsigned int getHashIndex(string hashInput) {
+    unsigned int sum = 0;
+    for(int i = 0; i < hashInput.length(); i++){
+        sum += (int)hashInput[i];
+    }
+    
+    cout << "title: " << hashInput //for debugging purposes
+         << " hash index: " << sum % HASH_SIZE << endl;
+
+    return (sum%HASH_SIZE); //this is the actual key
+                            //remainder so it never exceeds list size
+}
+
 
 // Using a single line from the file, this function allocates a
 // new netflixEntry.  The new entry will be filled-in from the file info (title, etc.).
@@ -100,6 +118,8 @@ netflixEntry *readSingleEntry(const string &lineFromFile) {
     return np;                          // Return the new entry to the caller
 }
 
+
+//MY WORK
 // Insert a new entry into the hash table
 void entryInsert(netflixEntry *newEnt, unsigned int hashIndex) {
 
@@ -117,6 +137,21 @@ void entryInsert(netflixEntry *newEnt, unsigned int hashIndex) {
     // 3) If hashTable[hashIndex] is non-zero, there is a linked list at this index.  Insert
     //    the new entry into the list at the front or at the end.
     //
+
+
+    if(entryHash[hashIndex] != 0){
+        netflixEntry* temp = 0; //temp to hold pointer to move
+        cout << "\nCollision occured\n";
+
+        //swapping the first entry with the new entry in the LL
+        entryHash[hashIndex] = temp;
+        entryHash[hashIndex] = newEnt;
+        entryHash[hashIndex]->next = temp;
+    }
+    else{
+        entryHash[hashIndex] = newEnt;
+    }
+
 }
 
 // This function accepts a string title and a reference
@@ -148,6 +183,10 @@ netflixEntry *entryFind(const string &title, unsigned int hashIndex, int &ncmp) 
     //    compare the title of each entry in the list to 'title'.
     // 5) If there is a match, return a pointer to that entry.  If the end of the list is
     //    reached, the entry was not found.
+
+
+    
+
 
     return foundPtr;
 }
