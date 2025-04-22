@@ -72,9 +72,10 @@ unsigned int getHashIndex(string hashInput) {
     }
     
     cout << "title: " << hashInput //for debugging purposes
-         << " hash index: " << sum % HASH_SIZE << endl;
+         << ", hash index: " << sum % HASH_SIZE << endl;
 
-    return (sum%HASH_SIZE); //this is the actual key
+
+    return (sum % HASH_SIZE); //this is the actual key
                             //remainder so it never exceeds list size
 }
 
@@ -139,16 +140,17 @@ void entryInsert(netflixEntry *newEnt, unsigned int hashIndex) {
     //
 
 
-    if(entryHash[hashIndex] != 0){
+    if(entryHash[hashIndex] != nullptr){
         netflixEntry* temp = 0; //temp to hold pointer to move
         cout << "\nCollision occured\n";
 
         //swapping the first entry with the new entry in the LL
-        entryHash[hashIndex] = temp;
+        temp = entryHash[hashIndex] ;
         entryHash[hashIndex] = newEnt;
         entryHash[hashIndex]->next = temp;
     }
     else{
+        cout << "\nNo collision! :) \n";
         entryHash[hashIndex] = newEnt;
     }
 
@@ -185,17 +187,23 @@ netflixEntry *entryFind(const string &title, unsigned int hashIndex, int &ncmp) 
     //    reached, the entry was not found.
 
     netflixEntry* cur = entryHash[hashIndex]; //pointer to keep track while in the while loop
-
-    while(cur != 0);{//as long as we arent looking at a nullptr, we can do a comparison. 
+                                              //set to given hashIndex for a given movie
+                                              int i = 0;
+                                              cout << "In find Entry";
+    while(cur != nullptr){//as long as we arent looking at a nullptr, we can do a comparison. 
        
+        cout << "in loop" << i;
         ncmp++;
         if(cur->title == title){//if the titles match, return whatever pointer we have
+            cout << "found movie, entryFind works" << endl;
             return cur;
         }
         cur = cur->next;        //sets pointer to next one in linked list
-    }          //While there is a next pointer, we loop
+        i++;
+    }
 
-    return foundPtr;
+    cout << "no movie found movie, entryFind works" << endl;
+    return nullptr;
 }
 
 //
@@ -249,36 +257,23 @@ int main() {
     // (example) Forever loop until the user requests an exit
     for (;;) {
         string user_title; //user inputed tile
-        int ncmp = 0;
+        int num = 0;
 
 
         cout << "Please enter a movie title: ";
         cin >> user_title;
 
-        np = entryFind(user_title, getHashIndex(user_title), ncmp);
 
-        cout << "Comparisons: " << ncmp << endl;
+        np = entryFind(user_title, getHashIndex(user_title), num);
+
+        cout << "Comparisons: " << num << endl;
         cout << "Type: " << np->type << endl;
         cout << "Movie: " << np->title << endl;
         cout << "Director: " << np->director << endl;
         cout << "Country: " << np->country << endl;
         cout << "Year of Release: " << np->year << endl;
         cout << "Duration: " << np->duration << endl;
-
-
-
-/*
-Comparisons: 4
-Type: Movie
-Movie: Jaws
-Director: Steven Spielberg
-Country: United States
-Year of Release: 1975
-Duration: 124 min
-*/
-
-
-
+        
         break;
     }
 
