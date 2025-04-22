@@ -184,9 +184,16 @@ netflixEntry *entryFind(const string &title, unsigned int hashIndex, int &ncmp) 
     // 5) If there is a match, return a pointer to that entry.  If the end of the list is
     //    reached, the entry was not found.
 
+    netflixEntry* cur = entryHash[hashIndex]; //pointer to keep track while in the while loop
 
-    
-
+    while(cur != 0);{//as long as we arent looking at a nullptr, we can do a comparison. 
+       
+        ncmp++;
+        if(cur->title == title){//if the titles match, return whatever pointer we have
+            return cur;
+        }
+        cur = cur->next;        //sets pointer to next one in linked list
+    }          //While there is a next pointer, we loop
 
     return foundPtr;
 }
@@ -241,13 +248,37 @@ int main() {
 
     // (example) Forever loop until the user requests an exit
     for (;;) {
+        string user_title; //user inputed tile
+        int ncmp = 0;
 
-        //
-        // Your input loop goes here.
-        //
-        // If the user enters a blank line, use 'break'.
-        // to exit the loop.
-        //
+
+        cout << "Please enter a movie title: ";
+        cin >> user_title;
+
+        np = entryFind(user_title, getHashIndex(user_title), ncmp);
+
+        cout << "Comparisons: " << ncmp << endl;
+        cout << "Type: " << np->type << endl;
+        cout << "Movie: " << np->title << endl;
+        cout << "Director: " << np->director << endl;
+        cout << "Country: " << np->country << endl;
+        cout << "Year of Release: " << np->year << endl;
+        cout << "Duration: " << np->duration << endl;
+
+
+
+/*
+Comparisons: 4
+Type: Movie
+Movie: Jaws
+Director: Steven Spielberg
+Country: United States
+Year of Release: 1975
+Duration: 124 min
+*/
+
+
+
         break;
     }
 
