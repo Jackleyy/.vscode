@@ -64,19 +64,18 @@ unsigned int getHashIndex(string hashInput) {
 }
 */
 
-//My Hash index generator
+
 unsigned int getHashIndex(string hashInput) {
-    unsigned int hash = 5381;
- 
-    for (unsigned int i = 0; i < hashInput.size(); i++)
-        hash = ((hash << 5) + hash) + hashInput[i];
+    unsigned int sum = 3851;
+    for(int i = 0; i < hashInput.length(); i++){
+        sum += (int)hashInput[i];
+    }
 
     cout << "title: " << hashInput //for debugging purposes
-    << ", hash index: " << hash % HASH_SIZE << endl;
-    
-    return (hash % HASH_SIZE);
+         << " hash index: " << sum % HASH_SIZE << endl;
 
-    
+    return (sum % HASH_SIZE); //this is the actual key
+                            //remainder so it never exceeds list size
 }
 
 
@@ -254,9 +253,22 @@ int main() {
         string user_title; //user inputed tile
         int num = 0;
 
-
+        int filled = 0;
+        for (int i = 0; i < HASH_SIZE; i++) {
+            if (entryHash[i] != nullptr) {
+                filled++;
+            }
+        }
+        cout << "\n--- Hash Table Usage Stats ---\n";
+        cout << "Filled buckets: " << filled << endl;
+        cout << "Empty buckets: " << HASH_SIZE - filled << endl;
+        cout << "Load factor: " << (float)filled / HASH_SIZE << endl;
+        
+        
         cout << "Please enter a movie title: ";
         getline(cin, user_title);
+
+        
 
         if(user_title.empty()){
             break;
@@ -264,14 +276,18 @@ int main() {
 
         np = entryFind(user_title, getHashIndex(user_title), num);
 
-        cout << "Comparisons: " << num << endl;
-        cout << "Type: " << np->type << endl;
-        cout << "Movie: " << np->title << endl;
-        cout << "Director: " << np->director << endl;
-        cout << "Country: " << np->country << endl;
-        cout << "Year of Release: " << np->year << endl;
-        cout << "Duration: " << np->duration << endl;
-        
+        if(np != nullptr){
+            cout << "Comparisons: " << num << endl;
+            cout << "Type: " << np->type << endl;
+            cout << "Movie: " << np->title << endl;
+            cout << "Director: " << np->director << endl;
+            cout << "Country: " << np->country << endl;
+            cout << "Year of Release: " << np->year << endl;
+            cout << "Duration: " << np->duration << endl;
+        }
+        else{
+            cout << "invalid input" << endl;
+        }
     }
 
     // And we're done!
