@@ -7,10 +7,10 @@ using namespace std;
 int main(){
     cout << std::boolalpha; // Enable boolalpha flag
     int SIZE = 10;
-    int rarray[SIZE -1]; 
+    int rarray[SIZE]; 
 
     //fils array of random size with random ints
-    for(int i = 0; i <= SIZE; i++){
+    for(int i = 0; i < SIZE; i++){
         rarray[i] = rand()%100;
     }
 
