@@ -157,63 +157,144 @@ footer a {
 }
 
 /* Media Query for Tablet Viewport */
+@media screen and (min-width:620px), print{
 
- 
     /* Tablet Viewport: Show tab-desk class, hide mobile class */
-    .tab-desk {}
+    .tab-desk {
+        display: block;
+    }
 
-    .mobile {}
+    .mobile {
+        display: none;
+
+    }
     
     /* Tablet Viewport: Style rules for nav area */
-    nav li {}
-    
-    nav li a {}
-    
-	.grid{}
-	aside{}
+    nav li {
+        border-top: none;
+        display: inline-block;
+        font-size: 1.25em;
 
+    }
+    
+    nav li a {
+        padding: .5em;
+    }
+    
+	.grid{
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-gap: 20px;
+    }
+	aside{
+        grid-column: 1 / span 2;
+    }
+
+}
 /* Media Query for Desktop Viewport */
-    
-    /* Desktop Viewport: Show tab-desk class, hide mobile class */
-    .tablet-desktop {}
 
-    .mobile {}
+@media screen and (min-width: 1024px), print{
+    /* Desktop Viewport: Show tab-desk class, hide mobile class */
+    .tablet-desktop {
+        display: block;
+    }
+
+    .mobile {
+        display: none;
+    }
     
     /* Desktop Viewport:Style rules for header content */
-    header {}
+    header {
+        text-align: center;
+        color: #234b95;
+        width: 27%;
+        float: left;
+    }
     
-    header h1 {}
+    header h1 {
+        font-size: 3em;
+        margin-top: 1.25em;
+        font-family: Garamond, times, serif;
+    }
 
-    header h3 {}
+    header h3 {
+        font-style: italic;
+        font-size: 1.25em;
+        font-family: future, arial, sans-serif;
+    }
 
     /* Desktop Viewport: Style rules for nav area */
-    nav {}
+    nav {
+        background-color: #234b95;
+        width: 70%;
+        float: right;
+    }
     
-    nav ul {}
+    nav ul {
+        list-style-type: none;
+        margin: 5em 1 em;
+        text-align: center;
+    }
 
-    nav li {}
+    nav li {
+        display: block;
+        font-size: 1.5em;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
 
-    nav li a {}
+    nav li a {
+        display: block;
+        color: #fff;
+        text-align: center;
+        padding: .5em;
+        text-decoration: none;
+    }
     
-    nav li a:link {}
+    nav li a:link {
+        color: #fff;
+    }
     
-    nav li a:hover {}
+    nav li a:hover {
+        color: #ccccff;
+    }
     
-    nav li a:active {}
+    nav li a:active {
+        color: #ff99ff
+    }
 	
-	.grid{}
-	aside{}
-    
+	.grid{
+        grid-template-columns: auto auto auto auto;
+        
+    }
+
+	aside{
+        grid-column: 1 /span 4;
+    }
+
+}    
     /* Desktop Viewport: Style rules for main content */
-    #pamper, #full, #basic {}
+    #pamper, #full, #basic {
+        width: 29%;
+        float: left;
+        margin: 0 2%
+    }
 
 /* Media Query for Large Desktop Viewports */
+@media screen and (min-width:1920px), print{
+    body {
+        background-color: gray;
+    }
     
-    body {}
-    
-    #container {}
+    #container {
+        width: 1920px;
+        margin: 0 auto;
+    }
         
-    main {}
+    main {
+        background-color: #e5e9fc;
+    }
     
-    footer, footer a {}
-    
+    footer, footer a {  
+        color: #e5e9fc;
+    }
+}
