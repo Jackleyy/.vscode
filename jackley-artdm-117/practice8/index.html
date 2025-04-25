@@ -1,66 +1,71 @@
 <!DOCTYPE html>
-<!-- 
-	Student Name: firstName lastName
-	File Name: index.html for challenge 8
-	Date:
- -->
 <html lang="en">
+
+<!--
+
+Student Name: Justin Ackley
+Assignment Name: Practice 2-Mini website
+Date: 2/23/2025
+
+--> 
+ 
 <head>
-	<title>Polished Paws: Home</title>
-	<meta charset="utf-8">
-    <link rel="stylesheet" href="css/styles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Cookie|Noto+Sans+KR&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="images/favicon.ico">
-	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-	<link rel="icon" sizes="192x192" href="images/android-chrome-192.png">
+  <title>General Information</title>
+  <link rel="stylesheet" href="css/styles.css"> <!-- link to my style sheet-->
 </head>
-<body>
-    
-    <div id="container">
 
-        <header>
-            <h1>Polished Paws</h1>
-            <h3>Happy Pets. Happy Owners.</h3>
-        </header>
 
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="#">Booking</a></li>
-                <li><a href="groomers.html">Groomers</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+<div id="container">
+
+<header class = grid>
+    <h1>General Information</h1>
+
+
+
+        <nav class = grid>
+            <ul><!-- all the links for my other webpages-->
+                <li><a href = "index.html">Home</a> </li>
+                <li><a href = "behavior.html">Eating behaviors</a> </li>
+                <li><a href = "mating.html">Mating patterns</a> </li>
+            </ul> 
         </nav>
+</header>
 
-        <!-- Hero Image -->
-        <div id="hero">
-            <img src="images/dog-banner.jpg" alt="banner of many dogs">
-        </div>
+<body>        
 
-        <!-- Use the main area to add the main content of the webpage -->
-        <main>
+    
+    <section><!-- i looked at your reference code and the section tag looks like what were supposed to do?-->
+                
 
-            <div id="welcome">
+            <figure>
+                <img src = "images/yawning-lion.jpg" alt = "lion is yawning and bearing its teeth">
+            </figure>
 
-                <p>Welcome to Polished Paws, where we take pride in providing the best grooming experience for your fur baby.</p>
 
-                <p>Our groomers don't just groom your dog, they pamper your pet to ensure comfort and quality.</p>
+            <p class = image_description>
+                The name "lion" has its origin in different languages, for example the Latin word leo and the ancient greek word leon. Linneaus, a Swedish botanist, 
+                physician and zoologist known mostly as the father of modern taxonomy, once referred to the lion as a part of the species Felis leo in his work, 
+                Systema Naturae during the 18th century.
+            </p>
 
-                <p>Contact us today to book your first appointment and receive a <span class="action">15% discount!</span></p>
+            <p>
+                The lion is nowadays part of the Panthera species, called Panthera leo, along with four other big cats; the tiger (Panthera tigris), the jaguar
+                (Panthera ocra) and the leopard (Panthera pardus). The name Panthera leo is believed to derive from Greek pan- (all) and ther (beast) but this isn't 
+                necessarily true. It also shows a striking resemblance to the Sanskrit word pundarikam (tiger) which in turn may originate from pandarah which means 
+                "whitish-yellow".
+            </p>
+    </section>
 
-            </div>
-
-        </main>
-
-        <footer>
-            <p>&copy; Copyright 2024. All Rights Reserved.</p>
-            <p><a href="mailto:contact@ppaws.net">contact@ppaws.net</a></p>
-        </footer>
-        
-    </div>
-	
+    
+    <footer><!--I believe i used this right?-->
+        <p>
+            <em>This fictitious website was created as an academic exercise for the Diablo Valley College course, ARTDM-171:Web Design I. In no way should this 
+            content be considered or used as a source of factual public information.</em>
+        </p>
+    </footer>
+    
 </body>
+
+</div>
+
 </html>

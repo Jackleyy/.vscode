@@ -1,300 +1,251 @@
-/*
-Author: firstName lastName
-Date:
-File Name: styles.css for challenge 8 start file
-*/
-
-/* CSS Reset */
-body, header, nav, main, footer, img, h1, h3, ul, section, aside, figure, figcaption {
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
-
-/* Style rules for body and images */
-body {
-    background-color: #9cb6e8;
-}
-
-img {
-    max-width: 100%;
+/**************** Style rules for everything*****************/
+nav a:link, a:visited{
     display: block;
-}
+    color: tan;
+    padding: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    text-align: center;
 
-/* Style rule for box sizing applies to all elements */
-* {
-  box-sizing: border-box;
+}
+body{
+    margin: 0;
+    background-color: tan ;
+}
+header{
+    background-color: whitesmoke;
+    text-align: center;
+    color: azure;
+    padding: .01em;
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif" ;
+}
+h1{
+    font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", "sans-serif" ; 
+    color: #643c0d ;
+    font-size: 45px;
+}
+p{
+    color: 562802;
+    font-size: 15px;
+    font-weight: normal;
+    margin: 0 auto;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+a,a:link{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    color:#390809;  
+}
+footer{
+    font-weight: bolder;
+    background-color: whitesmoke;
+    margin-top: 2%
 }
 
 /**************** Style rules for mobile viewport*****************/
-
-/* Style rule to hide tab-desk class */
-.tab-desk {
-    display: none;
-}
-
-/* Style rules for header content */
-header {
-    text-align: center;
-    color: #234b95;
-}
-
-header h1 {
-    font-size: 3em;
-    padding-top: 2%;
-    font-family: 'Cookie', cursive;
-}
-
-header h3 {
-    font-style: italic;
-    font-size: 1.25em;
-    font-family: Futura, Arial, sans-serif;
-    padding-bottom: 2%;
-}
-
-/* Style rules for navigation area */
-nav {
-    background-color: #234b95;
-}
-
-nav ul {
-    list-style-type: none;
-    text-align: center;
-}
-
-nav li {
-    display: block;
-    font-size: 1.5em;
-    font-family: Verdana, Arial, sans-serif;
-    font-weight: bold;
-    border-top: 1px solid #9cb6e8;
-}
-
-nav li a {
-    display: block;
-    color: #fff;
-    text-align: center;
-    padding: 0.5em 1em;
-    text-decoration: none;
-}
-
-/* Style rule for hero image */
-#hero {
-    clear: left;
-}
-
-/* Style rules for main content */
-main {
-    padding: 2%;
-    background-color: #e5e9fc;
-    overflow: auto;
-    font-family: 'Noto Sans KR', sans-serif;
-}
-
-main h2 {
-    color: #234b95;
-}
-
-main p {
-    font-size: 1.25em;
-}
-
-main ul {
-    list-style-type: square;
-    margin: 10%;
-}
-
-aside{
-	text-align: center;
-	font-size: 1.5em;
-	font-weight: bold;
-	color:#234b95;
-	text-shadow:5px 5px 10px #4577d3;
-}
-
-figure{
-	position:relative;
-	max-width:275px;
-	margin: 2% auto;
-	border:5px solid #234b95;
-	box-shadow:3px 3px 5px #4577d3;
-}
-
-figcaption{
-	position:absolute;
-	bottom:0;
-	background-color:rgba(35, 75, 149,0.7);
-	color:#fff;
-	width:100%;
-	padding:5% 0;
-	text-align:center;
-	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
-	font-size:1.5em;
-	font-weight:bold;
-}
-
-.round {
-    border-radius: 10px;
-}
-
-
-#pamper, #full, #basic {
-    margin: 0 2%;
-}
-
-/* Style rules for footer content */
-footer {
-    text-align: center;
-    font-size: 0.85em;
-    clear: left;
-    color: #234b95;
-    font-weight: bold;
-}
-
-footer a {
-    color: #234b95;
-    text-decoration: none;
-}
-
-/* Media Query for Tablet Viewport */
-@media screen and (min-width:620px), print{
-
-    /* Tablet Viewport: Show tab-desk class, hide mobile class */
-    .tab-desk {
-        display: block;
+@media screen and (max-width:800px), print{
+    #container{
+        width:100%;
+        background-color: beige;
+        margin:2em auto;/*center container in browser*/
     }
-
-    .mobile {
-        display: none;
-
-    }
-    
-    /* Tablet Viewport: Style rules for nav area */
-    nav li {
-        border-top: none;
-        display: inline-block;
-        font-size: 1.25em;
-
-    }
-    
-    nav li a {
-        padding: .5em;
-    }
-    
-	.grid{
+    .grid{
         display: grid;
         grid-template-columns: auto auto;
-        grid-gap: 20px;
     }
-	aside{
-        grid-column: 1 / span 2;
+    nav{
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        background-color: black;
+        text-align: center;
+        display: flex; /* Use flexbox */
+        justify-content: center; /* Center items horizontally */
+        align-items: center; /* Center items vertically */
+    }
+    nav ul{
+        margin: 0;
+        padding-left: 10px;
+        list-style: none;
+        text-align: center;
+        background-color: black;
+        font-weight: lighter;
+        
+    }
+    nav li{
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+    }
+    section{
+        margin: 0 auto;
+        overflow: auto;
+        background-color: beige;
+    }
+    figure{
+        text-align: center;
+    }
+    img{
+        width: 50%;
+    }
+    h1{
+        display: flex; /* Use flexbox */
+        justify-content: center; /* Center items horizontally */
+    }
+    nav a:focus{
+        background-color:white;
+        color:black;
+        font-weight:bold;
     }
 
 }
+
+
+/* Media Query for Tablet Viewport */
+@media screen and (min-width:800px), print{
+    #container{
+        width:100%;
+        background-color: beige;
+        margin:2em auto;/*center container in browser*/
+    }
+    .grid{
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+    nav{
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        background-color: black;
+        text-align: center;
+        display: flex; /* Use flexbox */
+        justify-content: center; /* Center items horizontally */
+        align-items: center; /* Center items vertically */
+    }
+    nav ul{
+        margin: 0;
+        padding-left: 10px;
+        list-style: none;
+        text-align: center;
+        background-color: black;
+        font-weight: lighter;
+        
+    }
+    nav li{
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+    }
+    body{
+        margin: 0;
+        background-color: tan ;
+    }
+    header{
+        background-color: whitesmoke;
+        text-align: center;
+        color: azure;
+        padding: .01em;
+        font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif" ;
+    }
+    nav a:focus{
+        background-color:white;
+        color:black;
+        font-weight:bold;
+    }
+    
+
+    img{
+        display: block;
+        margin: 0 auto; /* Center the image horizontally */
+        width: 50%;
+        
+    }
+}
+
+
+
 /* Media Query for Desktop Viewport */
 
 @media screen and (min-width: 1024px), print{
-    /* Desktop Viewport: Show tab-desk class, hide mobile class */
-    .tablet-desktop {
-        display: block;
-    }
 
-    .mobile {
-        display: none;
+    #container{
+        width: 1000px;
+        background-color: beige;
+        margin:2em auto;/*center container in browser*/
     }
-    
-    /* Desktop Viewport:Style rules for header content */
-    header {
+    body{
+        margin: 0;
+        background-color: tan ;
+    }
+    header{
+        background-color: whitesmoke;
         text-align: center;
-        color: #234b95;
-        width: 27%;
-        float: left;
+        color: azure;
+        padding: .01em;
+        font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif" ;
     }
-    
-    header h1 {
-        font-size: 3em;
-        margin-top: 1.25em;
-        font-family: Garamond, times, serif;
+    nav{
+        margin: 0;
+        width: 100%;
+        background-color: black;
+        padding-bottom: 0;
     }
-
-    header h3 {
-        font-style: italic;
-        font-size: 1.25em;
-        font-family: future, arial, sans-serif;
-    }
-
-    /* Desktop Viewport: Style rules for nav area */
-    nav {
-        background-color: #234b95;
-        width: 70%;
-        float: right;
-    }
-    
-    nav ul {
-        list-style-type: none;
-        margin: 5em 1 em;
-        text-align: center;
-    }
-
-    nav li {
-        display: block;
-        font-size: 1.5em;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-    }
-
-    nav li a {
-        display: block;
-        color: #fff;
-        text-align: center;
-        padding: .5em;
-        text-decoration: none;
-    }
-    
-    nav li a:link {
-        color: #fff;
-    }
-    
-    nav li a:hover {
-        color: #ccccff;
-    }
-    
-    nav li a:active {
-        color: #ff99ff
-    }
-	
-	.grid{
-        grid-template-columns: auto auto auto auto;
-        
-    }
-
-	aside{
-        grid-column: 1 /span 4;
-    }
-
-}    
-    /* Desktop Viewport: Style rules for main content */
-    #pamper, #full, #basic {
-        width: 29%;
-        float: left;
-        margin: 0 2%
-    }
-
-/* Media Query for Large Desktop Viewports */
-@media screen and (min-width:1920px), print{
-    body {
-        background-color: gray;
-    }
-    
-    #container {
-        width: 1920px;
+    nav ul{
         margin: 0 auto;
+        list-style: none;
+        text-align: center;
+        background-color: black;
+        font-weight: lighter;
     }
-        
-    main {
-        background-color: #e5e9fc;
+    nav li{
+        display: inline-block;
+        margin: 0 auto;
+        text-align: center;
+    }
+    nav a:link, a:visited{
+        display: block;
+        color: tan;
+        padding: 15px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size: 12pt;
+        text-align: center;
+
+    }
+    nav a:hover{
+        background-color:white;
+        color:black;
+        font-weight:bold;
+    }
+    section{
+        margin: 0 auto;
+        overflow: auto;
+        background-color: beige;
+    }
+    img{
+        border: 2px solid green;
+        min-width: 70%;
+        max-width: 100%;
+        height: auto;
+    }
+    figure{
+        margin-left: 0%;
+        float:right;
+    }
+    .grid{
+        display: grid;
+        grid-template-columns: auto;
+    }
+    p{
+        padding-top: 20px;
     }
     
-    footer, footer a {  
-        color: #e5e9fc;
-    }
+
 }
