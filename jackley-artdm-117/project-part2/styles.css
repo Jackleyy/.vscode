@@ -1,0 +1,296 @@
+/* =========================================================
+   Forward Fitness Club • styles.css
+   Mobile-first > Desktop @ min-width: 768 px
+   ======================================================= */
+
+/* ---------- 1. RESET & BASE TYPOGRAPHY ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;           /* 16 px default */
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: #222;
+  background-color: #f9fafc;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 0.5em;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #234b95;            /* brand primary */
+}
+
+/* Links & buttons */
+a {
+  color: #234b95;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6em 1.2em;
+  margin: 0.3em 0.2em;
+  border: 2px solid #234b95;
+  background: transparent;
+  color: #234b95;
+  font-weight: 600;
+  text-align: center;
+  transition: background 0.25s, color 0.25s;
+}
+
+.btn--primary,
+.btn:hover,
+.btn:focus {
+  background: #234b95;
+  color: #fff;
+}
+
+/* ---------- 2. HEADER & NAV ---------- */
+.site-header {
+  background: #234b95;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  letter-spacing: 0.03em;
+}
+
+.logo__sub {
+  font-weight: 300;
+}
+
+.site-nav {
+  margin-top: 0.75rem;
+}
+
+.nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;          /* mobile: stacked links */
+  gap: 0.5rem;
+}
+
+.nav__item a {
+  color: #fff;
+  font-weight: 600;
+}
+
+.nav__item a:hover,
+.nav__item a:focus {
+  text-decoration: underline;
+}
+
+/* ---------- 3. HERO ---------- */
+.hero {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.hero__text {
+  padding: 1.5rem 1rem;
+  background: #9cb6e8;            /* light brand accent */
+  text-align: center;
+}
+
+.hero__cta-wrap {
+  margin-top: 1rem;
+}
+
+/* ---------- 4. MAIN CONTENT ---------- */
+.main-content {
+  padding: 1.5rem 1rem;
+}
+
+/* Trial banner */
+.trial-banner {
+  background: #234b95;
+  color: #fff;
+  padding: 1rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.trial-banner__sub {
+  font-style: italic;
+  font-size: 0.95rem;
+  margin-top: 0.4em;
+}
+
+/* Hours list */
+.hours__list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+.hours__list li {
+  padding: 0.25em 0;
+}
+
+/* Facility & Exercise cards (About page) */
+.facility,
+.exercise {
+  margin-bottom: 2rem;
+}
+
+.facility,
+.exercise,
+.facility__body,
+.exercise__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.facility__img,
+.exercise__img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.facility__body,
+.exercise__body {
+  margin-top: 0.75rem;
+}
+
+/* ---------- 5. FOOTER ---------- */
+.site-footer {
+  background: #e6ebf8;
+  color: #234b95;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.site-footer .disclaimer {
+  margin-top: 1rem;
+  font-style: italic;
+  font-size: 0.8rem;
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+/* =========================================================
+   6. DESKTOP STYLES  @min-width 768 px
+   ======================================================= */
+@media (min-width: 768px) {
+
+  /* Header */
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo h1 {
+    font-size: 2rem;
+  }
+
+  .site-nav {
+    margin-top: 0;
+  }
+
+  .nav__list {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  /* Hero */
+  .hero {
+    flex-direction: row;          /* image left, text right */
+    align-items: stretch;
+  }
+
+  .hero__img {
+    width: 55%;
+  }
+
+  .hero__text {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 3rem;
+    text-align: left;
+  }
+
+  /* Main container width */
+  .main-content {
+    max-width: 1100px;
+    margin-inline: auto;
+    padding: 3rem 2rem;
+  }
+
+  /* Facility & exercise grid */
+  .facilities,
+  .exercises {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .facility,
+  .exercise {
+    flex-direction: column;       /* inside each card */
+  }
+
+  .facility__img,
+  .exercise__img {
+    height: 220px;
+  }
+
+  .facility__body,
+  .exercise__body {
+    margin-top: 1rem;
+  }
+
+  /* Hours list inline */
+  .hours__list {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 1.2rem 2rem;
+  }
+}
+
+/* =========================================================
+   7. LARGE DESKTOP  @min-width 1100 px (optional)
+   ======================================================= */
+@media (min-width: 1100px) {
+  .hero__img {
+    width: 60%;
+  }
+  .hero__text {
+    width: 40%;
+  }
+}
