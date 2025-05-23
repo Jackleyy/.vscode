@@ -131,6 +131,7 @@ int main() {
         cerr << "Invalid file." << endl;
         return (-1);
     }
+    
 
     // Read the header line of the file (first line, contains column labels).
     // 
@@ -173,9 +174,11 @@ int main() {
         // Move to the next adjacency list
         id += 1;
     }
-    cout << "Finished reading graph of " << id - 1 << " entries";
+    //cout << "Finished reading graph of " << id - 1 << " entries"; ==== Commented out this line ======
 
+    
     for (;;) {
+        /*======Also commented this out bc its a testing function======
         cout << endl << "Enter the name "
              << "and I'll tell you their friends (blank line to quit): ";
         getline(cin, inputLine);
@@ -202,6 +205,7 @@ int main() {
             string thisFriendName = names[thisFriend.nodeId];
             cout << "\t" << thisFriendName << " (weight: " << thisFriend.weight << ")" << endl;
         }
+         */
 
         // Reset the previous state
         for (int i = 0; i < MAX_ID; i++) {
@@ -216,6 +220,64 @@ int main() {
         // - Call the shortestPaths function to run the Dijkstra alg.//
         // - See the Canvas page for details                         //
         ///////////////////////////////////////////////////////////////
+        string dest, start;
+        cout << "Enter the starting name (or blank to quit)" << endl;
+        getline(cin, start);
+        // Find this person in the names array
+        int startIndex = -1;
+        for (int i = 0; i < (int)names.size(); i++)
+            if (names[i] == start)
+                startIndex = i;
+
+        if (startIndex == -1) {
+            cout << "Person not found." << endl;
+            continue;
+        }
+        
+        cout << "Enter the ending name (or X to quit)" << endl;
+        getline(cin, dest);
+
+        cout << start[0];
+
+        if (start == "" || dest == "") { //checks if they want to exit
+            cout << "Exiting program" << endl;
+            break;
+        }
+
+        //finds index of person
+        int destIndex = -1; 
+        for (int i = 0; i < (int)names.size(); ++i)
+            if (names[i] == dest)
+                destIndex = i;
+
+        if (destIndex == -1) {
+            cout << "Person not found." << endl;
+            continue;
+        }
+
+        bool reachable = shortestPaths(startIndex, destIndex);//is it reachable
+
+        //no?
+        if(!reachable){
+            cout << "There is no path between these two people" << endl;
+            continue;
+        }
+
+        //yes? lets find the path by working backwards
+        vector<int> path;
+        for(int i = destIndex; i != -1; i = bestParent[i]){
+            path.push_back(i);
+        }
+
+        cout << "The best path between these two people is: " << endl;
+
+        for(int i = path.size() -1; i >=0; --i){
+            cout << "      " << names[path[i]] << endl;
+        }
+
+        cout << "the cost of this path is : " << bestPathCost[destIndex] << endl;
+
+
     }
 
     cout << "Exiting..." << endl;
