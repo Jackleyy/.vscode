@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>FlashMatch — Landing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./landing.css" />
+</head>
+<body>
+  <header class="header">
+    <h1 class="brand">FlashMatch</h1>
+    <p class="tagline">Match terms to definitions. Fast. Simple. Fun.</p>
+  </header>
+
+  <main class="container">
+    <!-- Categories block -->
+    <section class="panel">
+      <h2 class="panel-title">Choose a category</h2>
+      <div class="grid">
+        <!-- Each category button carries a data-deck-id the game page can use -->
+        <button class="tile" data-type="preset" data-deck-id="bio101">
+          <div class="tile-title">Biology 101</div>
+          <div class="tile-sub">Core terms</div>
+        </button>
+        <button class="tile" data-type="preset" data-deck-id="cpp-basics">
+          <div class="tile-title">C++ Basics</div>
+          <div class="tile-sub">Syntax & concepts</div>
+        </button>
+        <button class="tile" data-type="preset" data-deck-id="us-history">
+          <div class="tile-title">US History</div>
+          <div class="tile-sub">Key events</div>
+        </button>
+      </div>
+    </section>
+
+    <!-- Create-your-own block -->
+    <section class="panel">
+      <h2 class="panel-title">Or create your own</h2>
+      <button id="createBtn" class="cta">Create your own deck</button>
+      <p class="hint">We’ll take your topic prompt, generate a deck, and start a game.</p>
+    </section>
+  </main>
+
+  <!-- Modal: prompt input (for create-your-own) -->
+  <div id="promptModal" class="modal hidden">
+    <div class="modal-card">
+      <h3>Create your own deck</h3>
+      <label class="label" for="promptInput">Describe your topic</label>
+      <textarea id="promptInput" class="input" rows="4" placeholder="e.g., Cell biology terms for high-school level"></textarea>
+
+      <div class="row">
+        <div class="col">
+          <label class="label" for="pairCount"># of pairs</label>
+          <input id="pairCount" class="input" type="number" min="4" max="24" value="8">
+        </div>
+        <div class="col">
+          <label class="label" for="difficulty">Difficulty</label>
+          <select id="difficulty" class="input">
+            <option>easy</option>
+            <option>medium</option>
+            <option>hard</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn secondary" data-close="#promptModal">Cancel</button>
+        <button id="promptNextBtn" class="btn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: hard mode toggle + proceed -->
+  <div id="optionsModal" class="modal hidden">
+    <div class="modal-card">
+      <h3>Game options</h3>
+      <div class="toggle-row">
+        <span>Hard mode?</span>
+        <button id="hardToggle" class="toggle" aria-pressed="false">OFF</button>
+      </div>
+      <div class="modal-actions">
+        <button class="btn secondary" data-close="#optionsModal">Back</button>
+        <button id="proceedBtn" class="btn primary">Proceed</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Simple toast for lightweight feedback -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="./landing.js" type="module"></script>
+</body>
+</html>

@@ -57,5 +57,6 @@
         "variant": "cpp",
         "chrono": "cpp",
         "ratio": "cpp"
-    }
+    },
+    "livePreview.serverRoot": "/Hackathon"
 }
