@@ -45,14 +45,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Use the deck data from landing page
     const pairs = deckData.pairs;
     
-    // Adjust numPairs based on available pairs and hard mode
-    const maxPairs = Math.min(pairs.length, options.hard ? 8 : 4);
-    numPairs = Math.min(numPairs, maxPairs);
+    // Use all available pairs (no more artificial limits)
+    numPairs = pairs.length;
 
-    // Shuffle pairs and pick only numPairs
-    const chosenPairs = pairs
-      .sort(() => Math.random() - 0.5)
-      .slice(0, numPairs);
+    // Shuffle pairs and use all of them
+    const chosenPairs = pairs.sort(() => Math.random() - 0.5);
 
     // Create cards for chosen pairs
     chosenPairs.forEach(pair => {
@@ -62,6 +59,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Shuffle cards on the board
     cards.sort(() => Math.random() - 0.5);
+
+    // Calculate grid dimensions and apply appropriate CSS class
+    const totalCards = cards.length;
+    const gridSize = Math.ceil(Math.sqrt(totalCards));
+    const gridClass = `grid-${gridSize}x${gridSize}`;
+    
+    // Remove any existing grid classes and add the new one
+    board.className = `game-board ${gridClass}`;
 
     // Render
     board.innerHTML = "";
